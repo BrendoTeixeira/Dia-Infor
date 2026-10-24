@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberGuard — Phishing Detector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="binario" aria-hidden="true"></canvas>
+  <a class="skip" href="#analisador">Pular para o analisador</a>
+
+  <!-- A. CABEÇALHO -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">&#9960;</span>
+      <div>
+        <h1>CyberGuard</h1>
+        <p>Phishing Detection System</p>
+      </div>
+    </div>
+    <nav aria-label="Navegação principal">
+      <a href="#analisador">Analisador</a>
+      <a href="#relatorio">Relatório</a>
+      <a href="#dicas">Boas práticas</a>
+    </nav>
+    <div class="status" role="status"><span class="dot" aria-hidden="true"></span>SISTEMA PRONTO</div>
+  </header>
+
+  <div class="faixa-binaria" aria-hidden="true"><span>01000011 01111001 01100010 01100101 01110010 01000111 01110101 01100001 01110010 01100100 &nbsp; 00110001 00110000 00110001 00110001 &nbsp; 01010011 01000101 01000011 01010101 01010010 01000101 &nbsp; 01000011 01111001 01100010 01100101 01110010 01000111 01110101 01100001 01110010 01100100 &nbsp; 00110001 00110000 00110001 00110001 &nbsp; 01010011 01000101 01000011 01010101 01010010 01000101 &nbsp;</span></div>
+
+  <main>
+    <!-- B. ÁREA DE ANÁLISE -->
+    <section id="analisador" class="card" aria-labelledby="t-analise">
+      <h2 id="t-analise">&gt; analisador_de_mensagem</h2>
+      <label for="mensagem">Cole aqui a mensagem suspeita (e-mail, SMS, WhatsApp):</label>
+      <textarea id="mensagem" rows="8" maxlength="5000" placeholder="Cole o texto da mensagem..."></textarea>
+      <div class="meta">
+        <span id="contador">0 / 5000</span>
+        <span id="erro" role="alert"></span>
+      </div>
+      <div class="botoes">
+        <button id="btn-analisar" class="primario" type="button">ANALISAR AMEAÇA</button>
+        <button id="btn-limpar" type="button">Limpar</button>
+        <button id="btn-exemplo-suspeito" type="button">Exemplo suspeito</button>
+        <button id="btn-exemplo-comum" type="button">Exemplo comum</button>
+      </div>
+    </section>
+
+    <!-- E. TERMINAL VISUAL -->
+    <section class="card" aria-labelledby="t-terminal">
+      <h2 id="t-terminal">&gt; terminal</h2>
+      <div id="terminal" role="log" aria-live="polite"></div>
+      <p class="nota">Representação visual do processamento local. Nada é enviado pela internet.</p>
+    </section>
+
+    <!-- D. RELATÓRIO -->
+    <section id="relatorio" class="card" aria-labelledby="t-relatorio">
+      <h2 id="t-relatorio">&gt; relatorio_de_analise</h2>
+      <p id="relatorio-vazio">Aguardando análise. Cole uma mensagem e clique em “ANALISAR AMEAÇA”.</p>
+      <div id="resultado" hidden>
+        <div class="resumo">
+          <div id="selo" class="selo">—</div>
+          <div class="pontuacao"><strong id="pontos">0</strong><span>/ 100 (pontuação ilustrativa)</span></div>
+        </div>
+        <div class="barra" role="progressbar" aria-label="Nível de risco" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barra">
+          <div id="barra-preenchimento"></div>
+        </div>
+        <h3>Sinais encontrados</h3>
+        <ul id="lista-sinais"></ul>
+        <h3>Recomendação</h3>
+        <p id="recomendacao"></p>
+        <p class="aviso">Aviso: este resultado não confirma nem descarta definitivamente um golpe.</p>
+      </div>
+      <p class="nota">A pontuação é apenas uma heurística educativa baseada em regras simples. Não é uma probabilidade real de fraude.</p>
+    </section>
+
+    <!-- F. BOAS PRÁTICAS -->
+    <section id="dicas" class="card" aria-labelledby="t-dicas">
+      <h2 id="t-dicas">&gt; boas_praticas</h2>
+      <ul class="dicas">
+        <li>Verifique o domínio por um canal confiável, como o site ou app oficial digitado por você.</li>
+        <li>Nunca forneça senhas ou códigos de verificação por links recebidos.</li>
+        <li>Desconfie de mensagens que pressionam por decisões rápidas.</li>
+        <li>Ative a autenticação em duas etapas nas suas contas.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>CyberGuard — projeto escolar. Toda a análise acontece localmente no seu navegador.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
